@@ -32,7 +32,7 @@
       ]
     }
   },
-  // "types": [ "vite/client"],
+   "types": [ "vite/client"],
   "include": [
     "tests/**/*.ts",
     "src/**/*.ts",
