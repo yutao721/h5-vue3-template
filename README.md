@@ -111,17 +111,7 @@ import { VantResolver } from 'unplugin-vue-components/resolvers';
 
 项目在 `plugins/vantUI.ts` 下统一管理组件，用哪个引入哪个，无需在页面里重复引用
 
-```javascript
-// 按需全局引入nutUI组件
-import Vue from 'vue';
-import { Button, Cell } from '@nutui/nutui';
-export const nutUiComponents = [Button, Cell];
 
-// 在main.ts文件中引入
-nutUiComponents.forEach((item) => {
-  app.use(item);
-});
-```
 
 ### Pinia 状态管理
 
