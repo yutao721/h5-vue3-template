@@ -16,16 +16,17 @@
 </template>
 
 <script lang="ts" setup>
-  import { useRouter } from 'vue-router';
-  import { ref } from 'vue';
-  const router = useRouter();
-  const active = ref('home');
+import { useRouter } from 'vue-router';
+import { ref } from 'vue';
+const router = useRouter();
+const active = ref('home');
 </script>
 
 <style scoped lang="scss">
-  .main-page {
-    height: calc(100vh - 50px);
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
+
+.main-page {
+  height: calc(100vh - 50px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 </style>
