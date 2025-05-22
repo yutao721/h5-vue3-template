@@ -1,12 +1,15 @@
 import request from '@/utils/useAxiosApi';
 
 /**
- * 账号密码登录
- * @returns UseAxiosReturn
+ * @Descripttion: 首页接口
+ * @param {*}
+ * @return {*}
  */
-export function loginPassword() {
-  return {
-    data: { name: '123' }
-  }
+export const queryIndex = (data):  Promise<any> => {
+  return request({
+    url: '/api/skins/list',
+    method: 'get',
+    params: data
+  })
 }
 

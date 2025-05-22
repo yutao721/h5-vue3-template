@@ -3,21 +3,12 @@ const routes = [
     name: 'root',
     path: '/',
     redirect: '/home',
-    component: () => import('@/components/Basic/index.vue'),
+    component: () => import('@/layout/index.vue'),
     children: [
       {
         name: 'Home',
         path: 'home',
         component: () => import('@/views/Home/index.vue'),
-        meta: {
-          title: '',
-          keepAlive: false,
-        },
-      },
-      {
-        name: 'List',
-        path: 'list',
-        component: () => import('@/views/List/index.vue'),
         meta: {
           title: '',
           keepAlive: false,

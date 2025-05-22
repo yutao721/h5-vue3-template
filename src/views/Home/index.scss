@@ -1,0 +1,23 @@
+@use '@/assets/css/mixin.scss' as *;
+
+.wrap {
+  width: 100%;
+  height: 100%;
+
+  .lists {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .list {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #ccc;
+
+    &-item {
+      @include textoverflow(1);
+    }
+  }
+}

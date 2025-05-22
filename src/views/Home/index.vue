@@ -1,68 +1,44 @@
 <template>
-  <van-nav-bar title="首页" />
-  <van-cell-group class="supportList">
-    <van-cell title="Vue3" icon="Check" />
-    <van-cell title="Vue-router" icon="Check" />
-    <van-cell title="Axios" icon="Check" />
-    <van-cell title="Pinia" icon="Check" />
-    <van-cell title="vantUi" icon="Check" />
-    <van-cell title="Jsx" icon="Check" />
-  </van-cell-group>
-  <div class="box"></div>
+  <div class="wrap">
+    <van-list class="lists" v-model:loading="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+      <div class="list" v-for="item in list" :key="item.id">
+        <div class="list-item">{{ item.id }}</div>
+      </div>
+    </van-list>
+  </div>
+
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useUserStore } from '@/store/modules/user';
-const userStore = useUserStore();
-const getUserInfo = computed(() => {
-  const { name = '' } = userStore.getUserInfo || {};
-  return name;
-});
+import { queryIndex } from '@/api/index'
+import { onMounted, ref } from 'vue'
+
+const list = ref([]);
+const loading = ref(false);
+const finished = ref(false);
+const page = ref(0);
+const fetchData = (pageNo: number) => {
+  const nowPage = pageNo || 1;
+  queryIndex({ page: nowPage, limit: 10 }).then((res) => {
+    console.log(res)
+    page.value = nowPage;
+    list.value = [...list.value, ...res.data];
+    loading.value = false;
+    if (page.value >= res.last_page) {
+      finished.value = true;
+    }
+    console.log(list.value)
+  })
+}
+
+const onLoad = () => {
+  fetchData(page.value + 1);
+};
+
 
 </script>
-<style lang="scss">
-.box {
-  width: 750px;
-  height: 200px;
-  background-color: red;
 
-}
 
-.header {
-  display: flex;
-  justify-content: center;
-  margin: 26px 0 10px;
-  padding: 0 20px;
-  height: 50px;
-  height: 30px;
-  font-size: 20px;
-}
-
-.intro-title {
-  text-align: center;
-}
-
-.intro-header {
-  height: 30px;
-  font-size: 16px;
-  text-align: center;
-}
-
-.supportList {
-  margin: 0 16px;
-
-  .nut-icon {
-    color: green;
-  }
-}
-
-.github-icon {
-  margin-top: 4px;
-  font-size: 24px;
-}
-
-.btn-wrap {
-  margin: 20px;
-}
+<style lang="scss" scoped>
+@use './index.scss';
 </style>

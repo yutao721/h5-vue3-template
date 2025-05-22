@@ -15,8 +15,9 @@ export default [
       return {
         code: 200,
         message: 'ok',
-        data: { name: 'Evan', age: 26 },
+        data: { name: 'Tom', age: 18 },
       };
     },
   },
+  
 ] as MockMethod[];
