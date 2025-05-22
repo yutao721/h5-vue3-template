@@ -8,8 +8,8 @@
   </div>
 
 
-  <van-tabbar v-model="active">
-    <van-tabbar-item icon="home-o" replace to="/home">首页</van-tabbar-item>
+  <van-tabbar route>
+    <van-tabbar-item icon="home-o" replace to="/index">首页</van-tabbar-item>
     <van-tabbar-item icon="friends-o" replace to="/member">我的</van-tabbar-item>
   </van-tabbar>
 </template>

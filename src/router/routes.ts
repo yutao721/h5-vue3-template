@@ -2,12 +2,12 @@ const routes = [
   {
     name: 'root',
     path: '/',
-    redirect: '/home',
+    redirect: '/index',
     component: () => import('@/layout/index.vue'),
     children: [
       {
-        name: 'Home',
-        path: 'home',
+        name: 'Index',
+        path: 'index',
         component: () => import('@/views/Home/index.vue'),
         meta: {
           title: '',
